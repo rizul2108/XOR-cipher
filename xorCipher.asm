@@ -7,16 +7,17 @@ STDOUT    equ 1
 
 section .data 
 
-    msg1 db "Enter string to be encrypted with XOR-cipher ", 0xA, 0xD 
+    msg1 db "Enter string to be encrypted with XOR-cipher (Max Length allowed: 100)", 0xA, 0xD 
     len1 equ $-msg1 
 
-    msg2 db "Please enter a key to encrypt", 0xA, 0xD 
+    msg2 db "Please enter a key to encrypt (Single charcater Only, if more than 1 character enterred 1st character will be taken as input)", 0xA, 0xD 
     len2 equ $-msg2 
 
     msg3 db "The encrypted string is: "
     len3 equ $-msg3
 
     key_len equ 1
+    input_len equ 100
 
 section .bss
     input resb 100
@@ -37,7 +38,7 @@ _start:
     mov eax, SYS_READ 
     mov ebx, STDIN
     mov ecx, input 
-    mov edx, 32
+    mov edx, input_len
     int 0x80 
 
     ;print message to take input of key character to xorred with
@@ -77,7 +78,7 @@ loop:
     mov eax, SYS_WRITE 
     mov ebx, STDOUT
     mov ecx, input
-    mov edx, 32
+    mov edx, input_len
     int 0x80 
 
     ;print a newline
