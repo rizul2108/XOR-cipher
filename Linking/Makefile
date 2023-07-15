@@ -6,10 +6,10 @@ $(name):  $(name).o $(name).c
 	./$(name)
 
 $(name).c:$(name).o
-	gcc xor-c.c xor-c.o -o xor-c
+	gcc $(name).c $(name).o -o  $(name)
 
 $(name).o:$(name).asm
-	nasm -f elf64 xor-c.asm
+	nasm -f elf64 $(name).asm
 
 clean:
 	rm -rf $(name) $(name).o
