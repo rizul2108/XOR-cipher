@@ -61,7 +61,7 @@ _start:
 
 loop:
     mov dl, byte [esi]  ;move the first character of string in dl register
-    xor dl, byte [esi]  ;xor it with the key and gets storred in dl register
+    xor dl, byte [edi]  ;xor it with the key and gets storred in dl register
     mov byte [esi], dl  ;replace the previously storred char with new xorred char
     inc esi             ;move the register to next character
     cmp byte [esi+1], 0 ;check if the next character is a null string then loop ends
