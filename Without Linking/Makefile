@@ -1,10 +1,13 @@
-# to link the object file and create an executable file and then run executable file
+name := xorCipher
 
-xorCipher:xorCipher.o
-	ld -m elf_i386 -s -o xorCipher xorCipher.o
-	./xorCipher
-	
-# assemble the program
+build: $(name)
 
-xorCipher.o:xorCipher.asm
-	nasm -f elf xorCipher.asm 			                                     
+$(name): $(name).o
+	ld -m elf_i386 -s -o $(name) $(name).o
+	./$(name)
+
+$(name).o: $(name).asm
+	nasm -f elf $(name).asm
+
+clean:
+	rm -rf $(name) $(name).o
