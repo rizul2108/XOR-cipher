@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
-
-void xorCipher(char* str,char key);
+#include"xorCiph.h"
+// void xorCipher(char* str,char key);
 int main() {
     char str[100];
     char key;
